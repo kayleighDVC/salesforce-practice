@@ -21,7 +21,6 @@ export class LoginService {
             });
 
             try {
-                const randName = "";
 
                 // LOG IN
                 const page: puppeteer.Page = await browser.newPage();
@@ -48,7 +47,7 @@ export class LoginService {
                 await page.waitForTimeout(10000);
 
                 //Page 4: Form
-                await page.click('#combobox-input-417');
+                // await page.click('#combobox-input-417');
                 // await page.$eval(
                 //     '#combobox-input-417',
                 //     (e, no) => e.setAttribute("data-value", no),
@@ -61,14 +60,14 @@ export class LoginService {
                 // await page.click('#input-406');
                 // await page.type('#input-406', 'Monera');
                 // await page.waitForTimeout(2000);
-                
+
 
 
             } catch (err) {
                 console.log(err)
-                //  let pages = await browser.pages()
-                //   await Promise.all(pages.map(page =>page.close()))
-                // await browser.close()
+                let pages = await browser.pages()
+                await Promise.all(pages.map(page => page.close()))
+                await browser.close()
                 console.log('fail');
             }
             await browser.close();
